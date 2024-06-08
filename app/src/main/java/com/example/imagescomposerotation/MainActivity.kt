@@ -4,14 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,8 +28,16 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ImagesComposeRotationTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CardStack(innerPadding)
+                    Box(modifier = Modifier.fillMaxSize()){
+                        for(i in 0..20)
+                        Card (modifier = Modifier.align(Alignment.Center)
+                            .height(200.dp)
+                            .width(100.dp)
+                            .graphicsLayer {
+                                translationX = -20f * i
+                            }){
+
+                        }
                 }
             }
         }
@@ -34,11 +47,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun CardStack(innerPadding: PaddingValues) {
+private fun CardStack(innerPadding: PaddingValues, modifier: Modifier) {
     for(i in 0..20){
-        Card (modifier = Modifier.size(200.dp).graphicsLayer {
-            translationX =
-        }){
+        Box (modifier = modifier.background(Color.Red)
+            .height(200.dp)
+            .width(100.dp)
+            .graphicsLayer {
+                rotationX = 100f
+
+
+            }){
 
         }
     }
